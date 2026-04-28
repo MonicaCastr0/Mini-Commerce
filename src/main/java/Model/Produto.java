@@ -1,18 +1,10 @@
 package Model;
-import jakarta.persistence.*;
-
-import java.security.PublicKey;
 import java.util.UUID;
-
-@Entity
 public class Produto {
-    @Id
     private String id;
     private String nome;
     private Double precoUnitario;
     private Integer qtdEstoque;
-
-    @ManyToOne
     private Categoria categoria;
 
     public Produto(){
@@ -24,7 +16,6 @@ public class Produto {
         this.precoUnitario = precoUnitario;
         this.qtdEstoque = qtdEstoque;
         this.categoria = categoria;
-
     }
 
     public String getNome() {

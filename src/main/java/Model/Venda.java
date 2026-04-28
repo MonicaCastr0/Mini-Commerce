@@ -1,20 +1,15 @@
 package Model;
-import jakarta.persistence.*;
-@Entity
 public class Venda {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Integer quantidade;
     private Double precoTotal;
-
-    @ManyToOne
     private Produto produto;
 
-    public Venda(){
+    public Venda(){}
 
-    }
-    public Venda(Integer quantidade, Produto produto){
+    public Venda(Long id, Integer quantidade, Produto produto){
+
+        this.id = id;
         this.quantidade = quantidade;
         this.produto = produto;
         this.precoTotal = quantidade * produto.getPrecoUnitario();
