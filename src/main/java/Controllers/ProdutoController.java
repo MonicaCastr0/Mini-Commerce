@@ -15,7 +15,7 @@ public class ProdutoController {
     public List<Produto> produtos = new ArrayList<>();
 
     @PostMapping("/produtos")
-    public ResponseEntity<Produto> criarProduto(Produto produto) {
+    public ResponseEntity<Produto> criarProduto(@RequestBody Produto produto) {
         produtos.add(produto);
         return ResponseEntity.ok(produto);
     }
