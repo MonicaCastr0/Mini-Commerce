@@ -34,4 +34,30 @@ public class ProdutoController {
         }
         return ResponseEntity.notFound().build();
     }
+
+    @PutMapping("/produtos/{id}")
+    public ResponseEntity<Produto> atualizarProduto(@PathVariable String id, @RequestBody Produto produtoAtualizado) {
+        for (Produto produto : produtos) {
+            if (produto.getId().equals(id)) {
+                produto.setNome(produtoAtualizado.getNome());
+                produto.setPrecoUnitario(produtoAtualizado.getPrecoUnitario());
+                produto.setQtdEstoque(produtoAtualizado.getQtdEstoque());
+                produto.setCategoria(produtoAtualizado.getCategoria());
+
+                return ResponseEntity.ok(produto);
+            }
+        }
+        return ResponseEntity.notFound().build();
+    }
+
+    @DeleteMapping("/produtos/{id}")
+    public ResponseEntity<Void> deletarProduto(@PathVariable String id) {
+        for (Produto produto : produtos) {
+            if (produto.getId().equals(id)) {
+                produtos.remove(produto);
+                return ResponseEntity.noContent().build();
+            }
+        }
+        return ResponseEntity.notFound().build();
+    }
 }
